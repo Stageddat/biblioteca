@@ -3,7 +3,7 @@
 <h2>Integrants</h2>
 
 <ul>
-  <li>Xuanyu Chen</li>
+  <li>Marc Chen</li>
   <li>José Rodriguez</li>
   <li>Aleix Sales</li>
 </ul>
