@@ -26,8 +26,12 @@ public class Usuari {
   }
 
   public void retornarLlibre(Llibre llibre) {
-    llibresPrestats.remove(llibre);
-  }
+    for(Llibre cadaLlibre : llibresPrestats) {
+      if(cadaLlibre.getTitol().equalsIgnoreCase(libre.getTitol())) {
+        llibresPrestats.remove(llibre);
+        break;
+      }
+    }
 
   // MODIFICAR Usuario
 
@@ -63,6 +67,9 @@ public class Usuari {
         return usuari;
       }
     }
-    return null; // Retorna null si no s'ha trobat l'usuari
+    return null;
   }
+
+  // ELIMINAR USER
+  // MIRAR SI TIENE LIBRO, SI TIENE NO SE PUEDE
 }
