@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Afegir User
 public class Usuari {
   private String nom;
   private List<Llibre> llibresPrestats;
@@ -26,5 +27,42 @@ public class Usuari {
 
   public void retornarLlibre(Llibre llibre) {
     llibresPrestats.remove(llibre);
+  }
+
+  // MODIFICAR Usuario
+
+  public void setNom(String nom) {
+    this.nom = nom;
+  }
+
+  // ELIMINAR User
+
+  /**
+   * Elimina un llibre de la llista de llibres prestats de l'usuari.
+   * 
+   * @param llibre el llibre a eliminar
+   */
+
+  public void eliminarLlibre(Llibre llibre) {
+    llibresPrestats.remove(llibre);
+  }
+
+  // LlISTAR User
+  public void llistarUsuari() {
+    System.out.println("Nom: " + nom);
+    System.out.print("Llibres prestats: ");
+    for (Llibre llibre : llibresPrestats) {
+      System.out.println(llibre.getTitol() + "- ");
+    }
+  }
+
+  // CERCAR User
+  public static Usuari cercarUsuari(List<Usuari> usuaris, String nom) {
+    for (Usuari usuari : usuaris) {
+      if (usuari.getNom().equalsIgnoreCase(nom)) {
+        return usuari;
+      }
+    }
+    return null; // Retorna null si no s'ha trobat l'usuari
   }
 }
