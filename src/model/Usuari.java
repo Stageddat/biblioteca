@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// Afegir User
 public class Usuari {
   private String nom;
   private List<Llibre> llibresPrestats;
@@ -26,32 +25,29 @@ public class Usuari {
   }
 
   public void retornarLlibre(Llibre llibre) {
-    for(Llibre cadaLlibre : llibresPrestats) {
-      if(cadaLlibre.getTitol().equalsIgnoreCase(libre.getTitol())) {
+    for (Llibre cadaLlibre : llibresPrestats) {
+      if (cadaLlibre.getTitol().equalsIgnoreCase(llibre.getTitol())) {
         llibresPrestats.remove(llibre);
-        break;
+        return;
       }
     }
+  }
 
-  // MODIFICAR Usuario
+  /**
+   * Modificar el nom d'un usuari.
+   * 
+   * @param nom El nou nom de l'usuari.
+   */
 
   public void setNom(String nom) {
     this.nom = nom;
   }
 
-  // ELIMINAR User
-
+  // LlISTAR User
   /**
-   * Elimina un llibre de la llista de llibres prestats de l'usuari.
-   * 
-   * @param llibre el llibre a eliminar
+   * Llistar les dades d'un usuari, incloent el seu nom i els llibres que té
    */
 
-  public void eliminarLlibre(Llibre llibre) {
-    llibresPrestats.remove(llibre);
-  }
-
-  // LlISTAR User
   public void llistarUsuari() {
     System.out.println("Nom: " + nom);
     System.out.print("Llibres prestats: ");
@@ -60,7 +56,13 @@ public class Usuari {
     }
   }
 
-  // CERCAR User
+  /**
+   * Cercar un usuari per nom en una llista d'usuaris.
+   * 
+   * @param usuaris Llista d'usuaris on buscar.
+   * @param nom     Nom de l'usuari a cercar.
+   * @return L'usuari trobat o null si no s'ha trobat.
+   */
   public static Usuari cercarUsuari(List<Usuari> usuaris, String nom) {
     for (Usuari usuari : usuaris) {
       if (usuari.getNom().equalsIgnoreCase(nom)) {
@@ -70,6 +72,28 @@ public class Usuari {
     return null;
   }
 
-  // ELIMINAR USER
-  // MIRAR SI TIENE LIBRO, SI TIENE NO SE PUEDE
+  /**
+   * Eliminar un usuari de la llista d'usuaris.
+   * 
+   * @param usuaris Llista d'usuaris de la qual eliminar.
+   * @param nom     Nom de l'usuari a eliminar.
+   * @return true si s'ha eliminat l'usuari, false si no s'ha trobat o té llibres
+   *         prestats.
+   */
+  public static boolean eliminarUsuari(List<Usuari> usuaris, String nom) {
+    for (Usuari usuari : usuaris) {
+      if (usuari.getNom().equalsIgnoreCase(nom)) {
+        if (usuari.getLlibresPrestats().isEmpty()) {
+          usuaris.remove(usuari);
+          return true;
+        } else {
+          System.out.println("No es pot eliminar l'usuari " + nom + " perquè té llibres prestats.");
+          return false;
+        }
+      }
+    }
+    System.out.println("No s'ha trobat l'usuari " + nom + ".");
+    return false;
+  }
+
 }
