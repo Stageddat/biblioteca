@@ -96,4 +96,9 @@ public class Usuari {
     return false;
   }
 
+  @Override
+  public String toString() {
+    return "Usuari: " + nom + ", Llibres prestats: " + llibresPrestats.size();
+  }
+
 }
