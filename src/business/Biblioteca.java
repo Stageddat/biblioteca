@@ -3,8 +3,6 @@ package business;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Llibre;
-
 public class Biblioteca {
   private List<Llibre> llibres;
 

@@ -6,4 +6,5 @@
   <li>Marc Chen</li>
   <li>José Rodriguez</li>
   <li>Aleix Sales</li>
+  <li>Joaquim Quirosa</li>
 </ul>
