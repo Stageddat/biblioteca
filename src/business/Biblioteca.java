@@ -34,6 +34,10 @@ public class Biblioteca {
     return null;
   }
 
+  public List<Llibre> llistarLlibres() {
+    return getLlibres();
+  }
+
   public void afegirUsuari(Usuari usuari) {
     usuaris.add(usuari);
   }
@@ -46,6 +50,10 @@ public class Biblioteca {
     return false;
   }
 
+  public List<Usuari> llistarUsuaris() {
+    return getUsuaris();
+  }
+
   public Usuari buscarUsuari(String nom) {
     for (Usuari usuari : usuaris) {
       if (usuari.getNom().equalsIgnoreCase(nom))
@@ -54,11 +62,11 @@ public class Biblioteca {
     return null;
   }
 
-  public List<Llibre> getLlibres() {
+  private List<Llibre> getLlibres() {
     return llibres;
   }
 
-  public List<Usuari> getUsuaris() {
+  private List<Usuari> getUsuaris() {
     return usuaris;
   }
 }
