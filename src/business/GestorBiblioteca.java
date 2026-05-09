@@ -50,4 +50,26 @@ public class GestorBiblioteca {
     return false;
   }
 
+  public boolean retornarLlibre(Usuari usuari, Llibre llibre) {
+    Prestec prestec = null;
+    for (Prestec p : prestecs) {
+      if (p.getUsuari().equals(usuari) && p.getLlibre().equals(llibre)) {
+        prestec = p;
+        break;
+      }
+    }
+
+    if (prestec == null) {
+      System.out.println("No s'ha trobat cap préstec del llibre i usuari.");
+      return false;
+    }
+
+    llibre.retornar();
+    usuari.retornarLlibre(llibre);
+    this.prestecs.remove(prestec);
+
+    System.out.println(usuari.getNom() + " ha retornat: " + llibre.getTitol());
+    return true;
+  }
+
 }
