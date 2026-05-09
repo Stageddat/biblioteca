@@ -13,7 +13,7 @@ public class Usuari {
   }
 
   public String getNom() {
-    return nom;
+    return this.nom;
   }
 
   /**
@@ -26,25 +26,20 @@ public class Usuari {
   }
 
   public List<Llibre> getLlibresPrestats() {
-    return llibresPrestats;
+    return this.llibresPrestats;
   }
 
   public void afegirLlibre(Llibre llibre) {
-    llibresPrestats.add(llibre);
+    this.llibresPrestats.add(llibre);
   }
 
   public void retornarLlibre(Llibre llibre) {
-    for (Llibre cadaLlibre : llibresPrestats) {
-      if (cadaLlibre.getTitol().equalsIgnoreCase(llibre.getTitol())) {
-        llibresPrestats.remove(llibre);
-        return;
-      }
-    }
+    this.llibresPrestats.remove(llibre);
   }
 
   @Override
   public String toString() {
-    return "Usuari: " + nom + ", Llibres prestats: " + llibresPrestats.size();
+    return "Usuari: " + this.nom + ", Llibres prestats: " + this.llibresPrestats.size();
   }
 
 }
