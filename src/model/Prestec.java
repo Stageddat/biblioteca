@@ -2,14 +2,25 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * Classe de prestació de llibres. Relaciona un usuari amb un llibre.
+ * 
+ * @author Joaquim
+ * @version 1.0
+ */
 public class Prestec {
-  // Propietats
   private Usuari usuari;
   private Llibre llibre;
   private LocalDate dataPrestec;
   private LocalDate dataRetorn;
 
-  // Constructor
+  /**
+   * Constructor de la classe Prestec.
+   * 
+   * @param usuari      Usuari que presta el llibre.
+   * @param llibre      Llibre prestat.
+   * @param dataPrestec Data de prestat del llibre.
+   */
   public Prestec(Usuari usuari, Llibre llibre, LocalDate dataPrestec) {
     this.usuari = usuari;
     this.llibre = llibre;
@@ -17,52 +28,88 @@ public class Prestec {
     this.dataRetorn = dataPrestec.plusWeeks(2);
   }
 
-  // Getters
+  /**
+   * Retorna l'usuari que presta el llibre.
+   * 
+   * @return Usuari que presta el llibre.
+   */
   public Usuari getUsuari() {
     return usuari;
   }
 
+  /**
+   * Retorna el llibre prestat.
+   * 
+   * @return Llibre prestat.
+   */
   public Llibre getLlibre() {
     return llibre;
   }
 
+  /**
+   * Retorna la data de prestat del llibre.
+   * 
+   * @return Data de prestat del llibre.
+   */
   public LocalDate getDataRetorn() {
     return dataRetorn;
   }
 
+  /**
+   * Retorna la data de prestat del llibre.
+   * 
+   * @return Data de prestat del llibre.
+   */
   public LocalDate getDataPrestec() {
     return dataPrestec;
   }
-
-  // Mètodes
 
   // Controlar el màxim de llibres que es poden demanar.
   // Nombre màxim de llibres que un usuari pot tenir en préstec.
   private static final int MAX_LLIBRES_PER_USUARI = 3;
 
+  /**
+   * Retorna el màxim de llibres que es poden demanar.
+   * 
+   * @return Màxim de llibres que un usuari pot tenir en préstec.
+   */
   public static int getMaxLlibresPerUsuari() {
     return MAX_LLIBRES_PER_USUARI;
   }
 
-  // Comprova si un usuari pot demanar un nou préstec
-  // basant-se en el nombre de préstecs actuals que té.
+  /**
+   * Controla si un usuari pot demanar un altre llibre.
+   * 
+   * @param nombrePrestecActuals Nombre de llibres en prestat.
+   * @return true si el usuari pot demanar un altre llibre, false en cas contrari.
+   */
   public static boolean potDemanarPrestec(int nombrePrestecActuals) {
     return nombrePrestecActuals < MAX_LLIBRES_PER_USUARI;
   }
 
-  // Gestió de préstecs
-  // Comprova si préstec està retardat respecte a la data actual.
+  /**
+   * Comprova si el préstec està retardat.
+   * 
+   * @return true si el préstec està retardat, false en cas contrari.
+   */
   public boolean estaRetardat() {
     return LocalDate.now().isAfter(dataRetorn);
   }
 
-  // Comprova si el préstec ja ha estat retornat (data de retorn passada o avui).
+  /**
+   * Comprova si el préstec ja ha estat retornat.
+   * 
+   * @return true si el préstec ja ha estat retornat, false en cas contrari.
+   */
   public boolean estaRetornat() {
     return !LocalDate.now().isBefore(dataRetorn);
   }
 
-  // Allarga el préstec una setmana addicional, sempre que no estigui retardat.
-  // Retorna true si s'ha pogut allargar, false en cas contrari.
+  /**
+   * Aumenta la data de retorn del llibre.
+   * 
+   * @return true si s'ha pogut aumentar la data de retorn, false en cas contrari.
+   */
   public boolean allargarPrestec() {
     if (estaRetardat()) {
       return false;
@@ -71,7 +118,11 @@ public class Prestec {
     return true;
   }
 
-  // Calcula els dies de retard del préstec. Retorna 0 si no hi ha retard.
+  /**
+   * Retorna els dies de retard del llibre.
+   *
+   * @return Dies de retard del llibre.
+   */
   public long diesDeRetard() {
     LocalDate avui = LocalDate.now();
     if (avui.isAfter(dataRetorn)) {
