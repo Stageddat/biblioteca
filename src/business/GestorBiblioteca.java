@@ -8,9 +8,18 @@ import model.Llibre;
 import model.Usuari;
 import model.Prestec;
 
+/**
+ * Gestor de la biblioteca. Controla els prestecs d'llibres.
+ * 
+ * @author Marc
+ * @version 1.0
+ */
 public class GestorBiblioteca {
   private List<Prestec> prestecs;
 
+  /**
+   * Constructor de la classe GestorBiblioteca.
+   */
   public GestorBiblioteca() {
     this.prestecs = new ArrayList<>();
   }
@@ -18,8 +27,8 @@ public class GestorBiblioteca {
   /**
    * Prestar un llibre a un usuari.
    * 
-   * @param usuari
-   * @param llibre
+   * @param usuari Nom de l'usuari que vol agafar el llibre.
+   * @param llibre El llibre que l'usuari vol agafar.
    */
   public void prestarLlibre(Usuari usuari, Llibre llibre) {
     if (!llibre.esPrestat()) {
@@ -50,6 +59,13 @@ public class GestorBiblioteca {
     return false;
   }
 
+  /**
+   * Retornar un llibre a la biblioteca.
+   * 
+   * @param usuari Usuari que retorna el llibre.
+   * @param llibre Llibre que retorna l'usuari.
+   * @return
+   */
   public boolean retornarLlibre(Usuari usuari, Llibre llibre) {
     Prestec prestec = null;
     for (Prestec p : prestecs) {
