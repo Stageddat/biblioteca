@@ -20,14 +20,29 @@ public class Llibre {
     this.prestat = false;
   }
 
+  /**
+   * Retorna el titol del llibre
+   * 
+   * @return El titol del llibre
+   */
   public String getTitol() {
     return titol;
   }
 
+  /**
+   * Retorna l'autor del llibre
+   * 
+   * @return L'autor del llibre
+   */
   public String getAutor() {
     return autor;
   }
 
+  /**
+   * Retorna si el llibre esta prestat o no
+   * 
+   * @return true si el llibre esta prestat, false en cas contrari
+   */
   public boolean esPrestat() {
     return prestat;
   }
@@ -51,6 +66,12 @@ public class Llibre {
     return titol + " de " + autor + (prestat ? " (En préstec)" : " (Disponible)");
   }
 
+  /**
+   * Modificar el llibre
+   * 
+   * @param nouTitol Nou titol del llibre
+   * @param nouAutor Nou autor del llibre
+   */
   public void setLlibre(String nouTitol, String nouAutor) {
     this.titol = nouTitol;
     this.autor = nouAutor;
