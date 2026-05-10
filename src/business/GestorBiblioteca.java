@@ -11,7 +11,7 @@ import model.Prestec;
 /**
  * Gestor de la biblioteca. Controla els prestecs d'llibres.
  * 
- * @author Marc
+ * @author Marc, Aleix
  * @version 1.0
  */
 public class GestorBiblioteca {
